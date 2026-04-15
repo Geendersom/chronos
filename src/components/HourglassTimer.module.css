@@ -1,0 +1,45 @@
+.wrap {
+  display: grid;
+  place-items: center;
+}
+
+.glass {
+  width: min(210px, 58vw);
+  height: min(290px, 72vw);
+  border: 2px solid #334155;
+  border-radius: 26px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.14), rgba(11, 18, 32, 0.55));
+}
+
+.sandTop,
+.sandBottom {
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  background: linear-gradient(180deg, #f8d58c, #f59e0b);
+  transform-origin: center bottom;
+}
+
+.sandTop {
+  top: 8%;
+  height: 38%;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.stream {
+  position: absolute;
+  left: calc(50% - 1px);
+  top: 43%;
+  width: 2px;
+  height: 22%;
+  border-radius: 999px;
+  background: #f8d58c;
+}
+
+.sandBottom {
+  bottom: 8%;
+  height: 38%;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}

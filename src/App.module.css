@@ -1,0 +1,48 @@
+.app {
+  display: grid;
+  gap: 1rem;
+}
+
+.content {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 240px minmax(0, 1fr) 280px;
+}
+
+.main {
+  min-width: 0;
+}
+
+.timerCard {
+  border: 1px solid var(--color-border);
+  border-radius: 1.2rem;
+  background: var(--color-surface);
+  min-height: 640px;
+  display: grid;
+  align-content: start;
+  gap: 1.5rem;
+  padding: 1.4rem;
+}
+
+.timerTitle {
+  margin: 0;
+  color: var(--color-muted);
+  letter-spacing: 0.13em;
+  font-size: 0.78rem;
+}
+
+.timerView {
+  min-height: 430px;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 1120px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .timerCard {
+    min-height: 560px;
+  }
+}

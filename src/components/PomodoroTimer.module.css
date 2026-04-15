@@ -1,0 +1,47 @@
+.wrap {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  width: min(380px, 90%);
+}
+
+.tomato {
+  width: 130px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ff8fa3, #dc2626 70%);
+  box-shadow: 0 0 24px rgba(220, 38, 38, 0.45);
+  position: relative;
+}
+
+.leaf {
+  position: absolute;
+  top: -12px;
+  left: calc(50% - 16px);
+  width: 32px;
+  height: 22px;
+  background: #22c55e;
+  border-radius: 50% 50% 0 0;
+}
+
+.time {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.barTrack {
+  width: 100%;
+  background: #223047;
+  height: 0.75rem;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}

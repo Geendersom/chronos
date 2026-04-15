@@ -1,0 +1,65 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--color-text);
+}
+
+.brand p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  letter-spacing: 0.07em;
+}
+
+.logo {
+  width: 2.2rem;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  border: 2px solid var(--color-primary);
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.logoHand {
+  width: 2px;
+  height: 0.8rem;
+  background: var(--color-primary);
+  border-radius: 999px;
+  transform: rotate(35deg);
+}
+
+.switch {
+  padding: 0.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  display: inline-flex;
+}
+
+.switch button {
+  border: 0;
+  background: transparent;
+  color: var(--color-muted);
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+}
+
+.switch .active {
+  background: #23324a;
+  color: var(--color-text);
+}

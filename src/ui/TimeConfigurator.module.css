@@ -1,0 +1,83 @@
+.panel {
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1rem;
+  background: var(--color-surface);
+  display: grid;
+  gap: 1rem;
+}
+
+.panel h3 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  letter-spacing: 0.09em;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-muted);
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stepper button,
+.presetGrid button,
+.soundList button {
+  border: 1px solid var(--color-border);
+  background: #131e31;
+  color: var(--color-text);
+  border-radius: 0.65rem;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+}
+
+.stepper strong {
+  min-width: 2ch;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.section {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.section p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.84rem;
+}
+
+.presetGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.presetGrid button {
+  padding: 0.55rem 0.65rem;
+}
+
+.soundList {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.soundList button {
+  text-align: left;
+  padding: 0.55rem 0.7rem;
+}
+
+.soundList .active {
+  border-color: var(--color-primary);
+  background: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.35);
+}
