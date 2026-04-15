@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
-import { playSound, type SoundType } from './audio/alarm'
+import { playClickSound, playSelectedSound, type SoundType } from './audio/alarm'
 import { AlarmTimer } from './components/clocks/Alarm/AlarmTimer'
 import { AnalogTimer } from './components/clocks/Analog/AnalogTimer'
 import { CircularTimer } from './components/clocks/Circular/CircularTimer'
@@ -35,7 +35,7 @@ const App = () => {
   }, [theme])
 
   useEffect(() => {
-    if (status === 'finished') playSound(sound)
+    if (status === 'finished') playSelectedSound(sound)
   }, [status, sound])
 
   const activeTitle = useMemo(
@@ -53,13 +53,33 @@ const App = () => {
     return <DigitalTimer {...props} />
   }
 
+  const handleTimerSelection = (timer: TimerKind): void => {
+    if (timer === selectedTimer) return
+    playClickSound()
+    setSelectedTimer(timer)
+  }
+
   const handleToggle = (): void => {
+    playClickSound()
     if (status === 'running') pause()
     else start()
   }
 
+  const handleReset = (): void => {
+    playClickSound()
+    reset()
+  }
+
   const handleDurationChange = (nextDuration: number): void => {
+    playClickSound()
     setDuration(nextDuration)
+  }
+
+  const handleSoundChange = (nextSound: SoundType): void => {
+    if (nextSound !== sound) {
+      playSelectedSound(nextSound)
+    }
+    setSound(nextSound)
   }
 
   return (
@@ -67,7 +87,7 @@ const App = () => {
       <TopBar theme={theme} onThemeChange={setTheme} />
 
       <div className={styles.content}>
-        <ClockSelector items={timerOptions} selected={selectedTimer} onSelect={setSelectedTimer} />
+        <ClockSelector items={timerOptions} selected={selectedTimer} onSelect={handleTimerSelection} />
 
         <main className={styles.main}>
           <GlassCard className={styles.timerCard}>
@@ -90,11 +110,11 @@ const App = () => {
               status={status}
               duration={duration}
               sound={sound}
-              onReset={reset}
+              onReset={handleReset}
               onToggle={handleToggle}
-              onSound={() => playSound(sound)}
+              onSound={() => playSelectedSound(sound)}
               onChangeDuration={handleDurationChange}
-              onSoundChange={setSound}
+              onSoundChange={handleSoundChange}
             />
           </GlassCard>
         </main>
