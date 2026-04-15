@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
-import type { TimerStatus } from '../engine/TimerEngine'
+import type { TimerStatus } from '../core/timeEngine'
+import { Button } from './Button'
 import styles from './Controls.module.css'
 
 interface ControlsProps {
@@ -14,20 +14,11 @@ export const Controls = ({ status, onReset, onToggle, onSound }: ControlsProps) 
 
   return (
     <div className={styles.controls}>
-      <motion.button whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} className={styles.ghost} onClick={onReset}>
-        Reset
-      </motion.button>
-      <motion.button
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.98 }}
-        className={styles.primary}
-        onClick={onToggle}
-      >
+      <Button onClick={onReset}>Reset</Button>
+      <Button variant="primary" onClick={onToggle}>
         {playLabel}
-      </motion.button>
-      <motion.button whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} className={styles.ghost} onClick={onSound}>
-        Som
-      </motion.button>
+      </Button>
+      <Button onClick={onSound}>Som</Button>
     </div>
   )
 }

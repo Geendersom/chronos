@@ -1,18 +1,18 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
 import { playSound, type SoundType } from './audio/alarm'
-import { AlarmTimer } from './components/AlarmTimer'
-import { AnalogTimer } from './components/AnalogTimer'
-import { CircularTimer } from './components/CircularTimer'
-import { DigitalTimer } from './components/DigitalTimer'
-import { HourglassTimer } from './components/HourglassTimer'
-import { PomodoroTimer } from './components/PomodoroTimer'
+import { AlarmTimer } from './components/clocks/Alarm/AlarmTimer'
+import { AnalogTimer } from './components/clocks/Analog/AnalogTimer'
+import { CircularTimer } from './components/clocks/Circular/CircularTimer'
+import { DigitalTimer } from './components/clocks/Digital/DigitalTimer'
+import { HourglassTimer } from './components/clocks/Hourglass/HourglassTimer'
+import { PomodoroTimer } from './components/clocks/Pomodoro/PomodoroTimer'
 import { useTimer } from './hooks/useTimer'
-import { Controls } from './ui/Controls'
-import { Sidebar } from './ui/Sidebar'
-import { TimeConfigurator } from './ui/TimeConfigurator'
-import { TopBar } from './ui/TopBar'
-import type { TimerKind, TimerOption } from './ui/types'
+import { ClockSelector } from './layout/ClockSelector'
+import { TopBar } from './layout/TopBar'
+import type { TimerKind, TimerOption } from './layout/types'
+import { ControlPanel } from './ui/ControlPanel'
+import { GlassCard } from './ui/GlassCard'
 import styles from './App.module.css'
 
 const timerOptions: TimerOption[] = [
@@ -67,10 +67,10 @@ const App = () => {
       <TopBar theme={theme} onThemeChange={setTheme} />
 
       <div className={styles.content}>
-        <Sidebar items={timerOptions} selected={selectedTimer} onSelect={setSelectedTimer} />
+        <ClockSelector items={timerOptions} selected={selectedTimer} onSelect={setSelectedTimer} />
 
         <main className={styles.main}>
-          <section className={styles.timerCard}>
+          <GlassCard className={styles.timerCard}>
             <p className={styles.timerTitle}>{activeTitle}</p>
 
             <AnimatePresence mode="wait">
@@ -86,16 +86,18 @@ const App = () => {
               </motion.div>
             </AnimatePresence>
 
-            <Controls status={status} onReset={reset} onToggle={handleToggle} onSound={() => playSound(sound)} />
-          </section>
+            <ControlPanel
+              status={status}
+              duration={duration}
+              sound={sound}
+              onReset={reset}
+              onToggle={handleToggle}
+              onSound={() => playSound(sound)}
+              onChangeDuration={handleDurationChange}
+              onSoundChange={setSound}
+            />
+          </GlassCard>
         </main>
-
-        <TimeConfigurator
-          duration={duration}
-          sound={sound}
-          onChangeDuration={handleDurationChange}
-          onSoundChange={setSound}
-        />
       </div>
     </div>
   )

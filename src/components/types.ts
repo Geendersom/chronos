@@ -1,4 +1,4 @@
-import type { TimerStatus } from '../engine/TimerEngine'
+import type { TimerStatus } from '../core/timeEngine'
 
 export interface TimerViewProps {
   remaining: number

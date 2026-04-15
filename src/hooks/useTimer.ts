@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useReducer, useRef } from 'react'
-import { createInitialTimerState, timerReducer, type TimerStatus } from '../engine/TimerEngine'
+import { createInitialTimerState, timerReducer, type TimerStatus } from '../core/timeEngine'
 
 interface UseTimerApi {
   remaining: number

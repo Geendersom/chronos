@@ -1,0 +1,57 @@
+.list {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 0.8rem;
+  background: transparent;
+  color: var(--color-text);
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.activeBg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.2), rgba(96, 165, 250, 0.08));
+}
+
+.selected {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.4), 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.icon,
+.label {
+  position: relative;
+  z-index: 1;
+}
+
+.icon {
+  width: 1.8rem;
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  display: grid;
+  place-items: center;
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: #cfe1ff;
+  background: #2a3b55;
+}
+
+.selected .icon {
+  background: var(--color-primary);
+}
+
+.label {
+  font-size: 0.92rem;
+}
