@@ -4,5 +4,5 @@ export interface TimerOption {
   id: TimerKind
   label: string
   title: string
-  icon: string
+  previewSrc: string
 }

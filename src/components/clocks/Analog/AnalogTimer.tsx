@@ -1,37 +1,48 @@
-import { motion } from 'framer-motion'
-import { minuteSweepTransition, secondSweepTransition } from '../../../animations/sweepHand'
+import { lazy, Suspense, useMemo, useState } from 'react'
 import type { TimerViewProps } from '../../types'
+import { AnalogWatchRealistic } from './AnalogWatchRealistic'
 import styles from './AnalogTimer.module.css'
+
+const AnalogWatch3D = lazy(() =>
+  import('./AnalogWatch3D').then((module) => ({ default: module.AnalogWatch3D })),
+)
 
 export const AnalogTimer = ({ remaining, progress }: TimerViewProps) => {
   const elapsedSeconds = progress * 3600
   const secondAngle = (elapsedSeconds % 60) * 6
   const minuteAngle = ((elapsedSeconds / 60) % 60) * 6
+  const [viewMode, setViewMode] = useState<'2d' | '3d'>('2d')
+
+  const timeLabel = useMemo(() => `${Math.ceil(remaining / 1000)} s`, [remaining])
 
   return (
     <div className={styles.clock}>
-      <div className={styles.face}>
-        {Array.from({ length: 12 }).map((_, idx) => (
-          <span
-            key={idx}
-            className={styles.tick}
-            style={{ transform: `rotate(${idx * 30}deg) translateY(-128px)` }}
-          />
-        ))}
-
-        <motion.div
-          className={styles.minuteHand}
-          animate={{ rotate: minuteAngle }}
-          transition={minuteSweepTransition}
-        />
-        <motion.div
-          className={styles.secondHand}
-          animate={{ rotate: secondAngle }}
-          transition={secondSweepTransition}
-        />
-        <span className={styles.center} />
+      <div className={styles.switch}>
+        <button
+          type="button"
+          className={viewMode === '2d' ? styles.active : ''}
+          onClick={() => setViewMode('2d')}
+        >
+          2D Realista
+        </button>
+        <button
+          type="button"
+          className={viewMode === '3d' ? styles.active : ''}
+          onClick={() => setViewMode('3d')}
+        >
+          3D
+        </button>
       </div>
-      <p className={styles.label}>{Math.ceil(remaining / 1000)} s</p>
+
+      {viewMode === '2d' ? (
+        <AnalogWatchRealistic minuteAngle={minuteAngle} secondAngle={secondAngle} />
+      ) : (
+        <Suspense fallback={<div className={styles.loading3d}>Carregando relogio 3D...</div>}>
+          <AnalogWatch3D minuteAngle={minuteAngle} secondAngle={secondAngle} />
+        </Suspense>
+      )}
+
+      <p className={styles.label}>{timeLabel}</p>
     </div>
   )
 }

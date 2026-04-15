@@ -13,6 +13,13 @@
   background: linear-gradient(180deg, rgba(59, 130, 246, 0.14), rgba(11, 18, 32, 0.55));
 }
 
+.canvas {
+  position: absolute;
+  inset: 18px 14px;
+  z-index: 2;
+  pointer-events: none;
+}
+
 .sandTop,
 .sandBottom {
   position: absolute;
@@ -20,6 +27,8 @@
   right: 20%;
   background: linear-gradient(180deg, #f8d58c, #f59e0b);
   transform-origin: center bottom;
+  opacity: 0.32;
+  z-index: 1;
 }
 
 .sandTop {
@@ -36,6 +45,7 @@
   height: 22%;
   border-radius: 999px;
   background: #f8d58c;
+  z-index: 3;
 }
 
 .sandBottom {

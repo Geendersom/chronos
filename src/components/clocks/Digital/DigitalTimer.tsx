@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import type { TimerViewProps } from '../../types'
-import { formatClock } from '../../types'
+import { formatClockPrecise } from '../../types'
 import styles from './DigitalTimer.module.css'
 
 const statusMap = {
@@ -11,8 +11,8 @@ const statusMap = {
 } as const
 
 export const DigitalTimer = ({ remaining, status }: TimerViewProps) => {
-  const { minutes, seconds } = formatClock(remaining)
-  const timeKey = `${minutes}:${seconds}`
+  const { minutes, seconds, centiseconds } = formatClockPrecise(remaining)
+  const timeKey = `${minutes}:${seconds}:${centiseconds}`
 
   return (
     <div className={styles.wrap}>
@@ -28,6 +28,7 @@ export const DigitalTimer = ({ remaining, status }: TimerViewProps) => {
           <span className={styles.minutes}>{minutes}</span>
           <span className={styles.separator}>:</span>
           <span className={styles.seconds}>{seconds}</span>
+          <span className={styles.milliseconds}>.{centiseconds}</span>
         </motion.div>
       </AnimatePresence>
 

@@ -20,10 +20,10 @@
 
 .progress {
   fill: none;
-  stroke: var(--color-primary);
+  stroke: url(#ringGradient);
   stroke-width: 16;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.55));
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.7));
 }
 
 .content {
@@ -32,6 +32,7 @@
   font-size: clamp(2.2rem, 6vw, 4rem);
   letter-spacing: 0.03em;
   font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 14px rgba(59, 130, 246, 0.35);
 }
 
 .minutes {

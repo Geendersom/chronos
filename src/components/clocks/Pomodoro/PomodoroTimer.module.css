@@ -10,7 +10,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #ff8fa3, #dc2626 70%);
-  box-shadow: 0 0 24px rgba(220, 38, 38, 0.45);
+  box-shadow: 0 12px 28px rgba(127, 29, 29, 0.55), inset 0 -8px 16px rgba(127, 29, 29, 0.35);
   position: relative;
 }
 
@@ -44,4 +44,5 @@
   height: 100%;
   width: 0;
   background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.45);
 }

@@ -25,7 +25,9 @@ export const ClockSelector = ({ items, selected, onSelect }: ClockSelectorProps)
               transition={{ type: 'spring', stiffness: 260, damping: 18 }}
             >
               {isSelected && <motion.span layoutId="activeSidebar" className={styles.activeBg} />}
-              <span className={styles.icon}>{item.icon}</span>
+              <span className={styles.thumbWrap}>
+                <img className={styles.thumb} src={item.previewSrc} alt={item.label} />
+              </span>
               <span className={styles.label}>{item.label}</span>
             </motion.button>
           )

@@ -1,6 +1,12 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
 import { playClickSound, playSelectedSound, type SoundType } from './audio/alarm'
+import alarmPreview from './assets/previews/alarm.png'
+import analogPreview from './assets/previews/analog.png'
+import circularPreview from './assets/previews/circular.png'
+import digitalPreview from './assets/previews/digital.png'
+import hourglassPreview from './assets/previews/hourglass.png'
+import pomodoroPreview from './assets/previews/pomodoro.png'
 import { AlarmTimer } from './components/clocks/Alarm/AlarmTimer'
 import { AnalogTimer } from './components/clocks/Analog/AnalogTimer'
 import { CircularTimer } from './components/clocks/Circular/CircularTimer'
@@ -16,12 +22,12 @@ import { GlassCard } from './ui/GlassCard'
 import styles from './App.module.css'
 
 const timerOptions: TimerOption[] = [
-  { id: 'digital', label: 'Cronometro', title: 'CRONOMETRO DIGITAL', icon: 'DG' },
-  { id: 'circular', label: 'Timer circular', title: 'TIMER CIRCULAR', icon: 'CR' },
-  { id: 'analog', label: 'Relogio analogico', title: 'RELOGIO ANALOGICO', icon: 'AN' },
-  { id: 'hourglass', label: 'Ampulheta', title: 'AMPULHETA', icon: 'AM' },
-  { id: 'alarm', label: 'Despertador', title: 'DESPERTADOR', icon: 'AL' },
-  { id: 'pomodoro', label: 'Pomodoro', title: 'POMODORO', icon: 'PM' },
+  { id: 'digital', label: 'Cronometro digital', title: 'CRONOMETRO DIGITAL', previewSrc: digitalPreview },
+  { id: 'circular', label: 'Timer circular', title: 'TIMER CIRCULAR', previewSrc: circularPreview },
+  { id: 'analog', label: 'Relogio analogico', title: 'RELOGIO ANALOGICO', previewSrc: analogPreview },
+  { id: 'hourglass', label: 'Ampulheta', title: 'AMPULHETA', previewSrc: hourglassPreview },
+  { id: 'alarm', label: 'Despertador', title: 'DESPERTADOR', previewSrc: alarmPreview },
+  { id: 'pomodoro', label: 'Pomodoro', title: 'POMODORO', previewSrc: pomodoroPreview },
 ]
 
 const App = () => {

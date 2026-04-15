@@ -1,0 +1,54 @@
+.watch {
+  position: relative;
+  width: min(340px, 76vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 0 18px 36px rgba(2, 8, 23, 0.55), inset 0 0 24px rgba(148, 163, 184, 0.15);
+  overflow: hidden;
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  mix-blend-mode: screen;
+  opacity: 0.24;
+}
+
+.hand {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+
+.hourHand {
+  filter: drop-shadow(0 0 3px rgba(15, 23, 42, 0.7));
+}
+
+.minuteHand {
+  filter: drop-shadow(0 0 3px rgba(15, 23, 42, 0.8));
+}
+
+.secondHand {
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6));
+}
+
+.centerCap {
+  position: absolute;
+  left: calc(50% - 8px);
+  top: calc(50% - 8px);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #dce7f8, #63718a);
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.65);
+}

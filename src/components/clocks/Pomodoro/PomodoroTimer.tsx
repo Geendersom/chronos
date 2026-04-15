@@ -8,9 +8,13 @@ export const PomodoroTimer = ({ progress, remaining }: TimerViewProps) => {
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.tomato}>
+      <motion.div
+        className={styles.tomato}
+        animate={{ scale: [1, 1.03, 1], boxShadow: ['0 0 20px rgba(220, 38, 38, 0.4)', '0 0 36px rgba(239, 68, 68, 0.58)', '0 0 20px rgba(220, 38, 38, 0.4)'] }}
+        transition={{ duration: 2.2, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
+      >
         <span className={styles.leaf} />
-      </div>
+      </motion.div>
       <p className={styles.time}>
         {minutes}:{seconds}
       </p>
