@@ -21,7 +21,7 @@ export const ClockSelector = ({ items, selected, onSelect }: ClockSelectorProps)
               type="button"
               className={`${styles.item} ${isSelected ? styles.selected : ''}`}
               onClick={() => onSelect(item.id)}
-              whileHover={{ x: 4 }}
+              whileHover={{ x: 4, y: -1 }}
               transition={{ type: 'spring', stiffness: 260, damping: 18 }}
             >
               {isSelected && <motion.span layoutId="activeSidebar" className={styles.activeBg} />}
