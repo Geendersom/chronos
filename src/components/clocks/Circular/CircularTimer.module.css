@@ -1,6 +1,6 @@
 .wrap {
   position: relative;
-  width: min(360px, 85vw);
+  width: 200px;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -14,31 +14,52 @@
 
 .track {
   fill: none;
-  stroke: #243043;
-  stroke-width: 16;
+  stroke: var(--border-subtle);
+  stroke-width: 8;
+}
+
+.glow {
+  fill: none;
+  stroke: var(--accent-cyan);
+  stroke-width: 8;
+  opacity: 0.3;
+  filter: url(#ringGlow);
 }
 
 .progress {
   fill: none;
   stroke: url(#ringGradient);
-  stroke-width: 16;
+  stroke-width: 8;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.7));
+  filter: drop-shadow(0 0 8px var(--accent-blue-glow));
 }
 
 .content {
   position: absolute;
-  font-weight: 700;
-  font-size: clamp(2.2rem, 6vw, 4rem);
-  letter-spacing: 0.03em;
+  display: grid;
+  justify-items: center;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 1;
+  letter-spacing: 0.02em;
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 14px rgba(59, 130, 246, 0.35);
+  font-family: 'Orbitron', ui-sans-serif, sans-serif;
+  text-shadow: 0 0 8px var(--accent-blue-glow);
 }
 
 .minutes {
-  color: var(--color-primary);
+  color: var(--text-primary);
 }
 
 .seconds {
-  color: var(--color-text);
+  color: var(--text-secondary);
+}
+
+.label {
+  margin-top: 0.35rem;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-family: 'DM Sans', ui-sans-serif, sans-serif;
 }

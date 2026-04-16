@@ -1,114 +1,38 @@
 import { motion } from 'framer-motion'
-import { useEffect, useRef } from 'react'
-import {
-  getSandBottomAnimation,
-  getSandStreamAnimation,
-  getSandTopAnimation,
-  sandSpring,
-  sandStreamTransition,
-} from '../../../animations/sandPhysics'
 import type { TimerViewProps } from '../../types'
 import styles from './HourglassTimer.module.css'
 
 export const HourglassTimer = ({ progress, status }: TimerViewProps) => {
   const isRunning = status === 'running'
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    const dpr = window.devicePixelRatio || 1
-    const width = 180
-    const height = 250
-    canvas.width = width * dpr
-    canvas.height = height * dpr
-    canvas.style.width = `${width}px`
-    canvas.style.height = `${height}px`
-    ctx.scale(dpr, dpr)
-
-    const particles = Array.from({ length: 110 }, () => ({
-      x: 90 + (Math.random() - 0.5) * 16,
-      y: 120 + Math.random() * 6,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: 1.2 + Math.random() * 1.1,
-      radius: 1 + Math.random() * 1.4,
-    }))
-
-    let frame = 0
-    let rafId = 0
-
-    const draw = (): void => {
-      frame += 1
-      ctx.clearRect(0, 0, width, height)
-
-      const topFill = (1 - progress) * 68
-      const bottomFill = progress * 68
-
-      ctx.fillStyle = 'rgba(248, 213, 140, 0.88)'
-      ctx.beginPath()
-      ctx.moveTo(90 - topFill, 40)
-      ctx.lineTo(90 + topFill, 40)
-      ctx.lineTo(90, 112)
-      ctx.closePath()
-      ctx.fill()
-
-      ctx.fillStyle = 'rgba(248, 213, 140, 0.95)'
-      ctx.beginPath()
-      ctx.moveTo(90, 138)
-      ctx.lineTo(90 + bottomFill, 210)
-      ctx.lineTo(90 - bottomFill, 210)
-      ctx.closePath()
-      ctx.fill()
-
-      if (isRunning) {
-        ctx.fillStyle = 'rgba(248, 213, 140, 0.95)'
-        particles.forEach((p) => {
-          p.x += p.vx
-          p.y += p.vy
-          if (p.y > 208 || Math.abs(p.x - 90) > 74) {
-            p.x = 90 + (Math.random() - 0.5) * 14
-            p.y = 118 + Math.random() * 4
-            p.vx = (Math.random() - 0.5) * 0.32
-            p.vy = 1.25 + Math.random() * 1.05
-          }
-
-          const pulse = 0.78 + Math.sin((frame + p.x) * 0.08) * 0.22
-          ctx.globalAlpha = pulse
-          ctx.beginPath()
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
-          ctx.fill()
-        })
-        ctx.globalAlpha = 1
-      }
-
-      rafId = requestAnimationFrame(draw)
-    }
-
-    rafId = requestAnimationFrame(draw)
-    return () => cancelAnimationFrame(rafId)
-  }, [isRunning, progress])
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.glass}>
-        <canvas ref={canvasRef} className={styles.canvas} />
-        <motion.div className={styles.sandTop} animate={getSandTopAnimation(progress)} transition={sandSpring} />
+      <div className={styles.card}>
+        <svg viewBox="0 0 100 160" className={styles.svg}>
+          <rect x="20" y="4" width="60" height="6" rx="3" className={styles.bar} />
+          <rect x="20" y="150" width="60" height="6" rx="3" className={styles.bar} />
+          <path d="M28 10c0 25 22 25 22 40s-22 15-22 50M72 10c0 25-22 25-22 40s22 15 22 50" className={styles.frame} />
 
-        <motion.div
-          className={styles.stream}
-          animate={getSandStreamAnimation(isRunning)}
-          transition={sandStreamTransition}
-        />
-
-        <motion.div
-          className={styles.sandBottom}
-          animate={getSandBottomAnimation(progress)}
-          transition={sandSpring}
-        />
+          <polygon
+            points={`${50 - progress * 22},22 ${50 + progress * 22},22 50,68`}
+            className={styles.topSand}
+            style={{ opacity: 1 - progress * 0.7 }}
+          />
+          <polygon
+            points={`${50 - progress * 22},138 ${50 + progress * 22},138 50,92`}
+            className={styles.bottomSand}
+            style={{ opacity: 0.3 + progress * 0.7 }}
+          />
+          <motion.line
+            x1="50"
+            y1="72"
+            x2="50"
+            y2="92"
+            className={styles.stream}
+            animate={isRunning ? { opacity: [1, 0.4, 1], y: [0, 2, 0] } : { opacity: 0.2, y: 0 }}
+            transition={{ duration: 0.6, repeat: Infinity }}
+          />
+        </svg>
       </div>
     </div>
   )

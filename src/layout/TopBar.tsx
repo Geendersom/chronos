@@ -10,7 +10,10 @@ export const TopBar = ({ theme, onThemeChange }: TopBarProps) => {
     <header className={styles.topbar}>
       <div className={styles.brand}>
         <span className={styles.logo} aria-hidden>
-          <span className={styles.logoHand} />
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+            <circle cx="12" cy="12" r="8" />
+            <path d="M12 7v5l2.5 1.5" strokeLinecap="round" />
+          </svg>
         </span>
         <div>
           <h1>Chronos</h1>

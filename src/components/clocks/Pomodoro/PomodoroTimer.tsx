@@ -8,6 +8,14 @@ export const PomodoroTimer = ({ progress, remaining }: TimerViewProps) => {
 
   return (
     <div className={styles.wrap}>
+      <div className={styles.tabs}>
+        <button type="button" className={styles.tabActive}>
+          Foco
+        </button>
+        <button type="button">Pausa curta</button>
+        <button type="button">Pausa longa</button>
+      </div>
+
       <motion.div
         className={styles.tomato}
         animate={{ scale: [1, 1.03, 1], boxShadow: ['0 0 20px rgba(220, 38, 38, 0.4)', '0 0 36px rgba(239, 68, 68, 0.58)', '0 0 20px rgba(220, 38, 38, 0.4)'] }}
@@ -25,6 +33,8 @@ export const PomodoroTimer = ({ progress, remaining }: TimerViewProps) => {
           transition={{ type: 'spring', stiffness: 120, damping: 20 }}
         />
       </div>
+
+      <p className={styles.sessions}>● ○ ○ ○</p>
     </div>
   )
 }

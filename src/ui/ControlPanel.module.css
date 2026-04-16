@@ -1,4 +1,5 @@
 .panel {
   display: grid;
-  gap: 1rem;
+  gap: 0.9rem;
+  margin-top: 0.2rem;
 }

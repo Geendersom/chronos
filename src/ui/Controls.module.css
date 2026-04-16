@@ -1,6 +1,50 @@
 .controls {
   display: flex;
   justify-content: center;
-  gap: 0.9rem;
+  gap: 12px;
   flex-wrap: wrap;
+}
+
+.iconBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.iconBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.iconBtn:hover {
+  border-color: var(--border-accent);
+  color: var(--accent-blue);
+}
+
+.playBtn {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  border: 0;
+  background: var(--accent-blue);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.playBtn:hover {
+  box-shadow: 0 0 20px var(--accent-blue-glow);
+}
+
+.playBtn svg {
+  width: 23px;
+  height: 23px;
 }

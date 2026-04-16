@@ -11,24 +11,25 @@
 .face {
   display: grid;
   place-items: center;
-  width: min(320px, 82vw);
-  aspect-ratio: 2.2;
-  border-radius: 28px;
-  border: 1px solid var(--color-border);
-  background: linear-gradient(180deg, #1f2b41, #131c2f);
-  color: var(--color-text);
-  font-size: clamp(2rem, 7vw, 3.2rem);
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  width: min(260px, 82vw);
+  height: 160px;
+  border-radius: 20px;
+  border: 1px solid var(--border-accent);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: clamp(2rem, 7vw, 52px);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  font-family: 'Orbitron', ui-sans-serif, sans-serif;
 }
 
 .bellLeft,
 .bellRight {
   position: absolute;
-  top: -18px;
-  width: 34px;
-  height: 18px;
-  border: 2px solid var(--color-primary);
+  top: -14px;
+  width: 28px;
+  height: 14px;
+  border: 2px solid var(--accent-blue);
   border-bottom: 0;
   border-radius: 22px 22px 0 0;
 }
@@ -38,11 +39,31 @@
 }
 
 .bellRight {
-  right: 18px;
+  right: 14px;
+}
+
+.footLeft,
+.footRight {
+  position: absolute;
+  bottom: -11px;
+  width: 20px;
+  height: 8px;
+  border-radius: 8px 8px 0 0;
+  background: var(--text-secondary);
+}
+
+.footLeft {
+  left: 26px;
+}
+
+.footRight {
+  right: 26px;
 }
 
 .label {
   margin: 0;
-  color: var(--color-muted);
-  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  letter-spacing: 0.24em;
+  font-size: 11px;
+  font-family: 'Orbitron', ui-sans-serif, sans-serif;
 }

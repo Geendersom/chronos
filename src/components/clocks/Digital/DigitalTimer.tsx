@@ -5,7 +5,7 @@ import styles from './DigitalTimer.module.css'
 
 const statusMap = {
   idle: 'PRONTO',
-  running: 'EM EXECUCAO',
+  running: 'RODANDO',
   paused: 'PAUSADO',
   finished: 'FINALIZADO',
 } as const
@@ -33,7 +33,7 @@ export const DigitalTimer = ({ remaining, status }: TimerViewProps) => {
       </AnimatePresence>
 
       <div className={styles.status}>
-        <span className={styles.dot} />
+        <span className={`${styles.dot} ${status === 'running' ? styles.running : ''}`} />
         <span>{statusMap[status]}</span>
       </div>
     </div>

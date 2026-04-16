@@ -20,6 +20,8 @@ export const AlarmTimer = ({ remaining, status }: TimerViewProps) => {
         <span className={styles.face}>
           {minutes}:{seconds}
         </span>
+        <span className={styles.footLeft} />
+        <span className={styles.footRight} />
       </motion.div>
       <p className={styles.label}>{isRinging ? 'ALARME ATIVO' : 'ALARME PRONTO'}</p>
     </div>

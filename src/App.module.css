@@ -1,45 +1,66 @@
 .app {
   display: grid;
-  gap: 1rem;
+  gap: 0;
+  min-height: 100vh;
+  background: var(--bg-base);
 }
 
 .content {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-columns: 220px minmax(0, 1fr);
+  min-height: calc(100vh - 60px);
 }
 
 .main {
   min-width: 0;
+  padding: 1.25rem;
 }
 
 .timerCard {
-  min-height: 640px;
+  min-height: calc(100vh - 98px);
   display: grid;
   align-content: start;
-  gap: 1.5rem;
-  padding: 1.4rem;
+  gap: 1.3rem;
+  padding: 1.2rem;
+  background: transparent;
 }
 
 .timerTitle {
   margin: 0;
-  color: var(--color-muted);
-  letter-spacing: 0.13em;
-  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.28em;
+  font-size: 0.69rem;
+  font-family: 'Orbitron', ui-sans-serif, sans-serif;
 }
 
 .timerView {
-  min-height: 430px;
+  min-height: 320px;
   display: grid;
   place-items: center;
+  animation: fadeSlideIn 0.22s ease;
 }
 
-@media (max-width: 1120px) {
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
   .content {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
 
+  .main {
+    padding: 0.85rem;
+  }
   .timerCard {
-    min-height: 560px;
+    min-height: auto;
   }
 }
